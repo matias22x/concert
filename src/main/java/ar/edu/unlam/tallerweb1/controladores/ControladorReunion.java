@@ -75,7 +75,6 @@ public class ControladorReunion {
 	public ModelAndView reunionUsuarios(@RequestParam("idReunion") Long idReunion){ 
 	  ModelMap modelo = new ModelMap();
 	  modelo.put("datosReunion", servicioReunion.reunionporidService(idReunion));
-	  modelo.put("usuariosReunion",servicioReunion.listaUsuariosReunionService(idReunion));
 	  modelo.put("idR", idReunion);
 	  return new ModelAndView("reunionUsuarios",modelo);	   
 	 }

@@ -4,4 +4,3 @@
 	<p>${usuarioRegistro.getNombre()}</p><br>
 	<p>Para disfrutar de la aplicación haz click en <a href="IniciarSesion">Iniciar Sesion</a></p>
 </div>
-<%@ include file="Footer.jsp" %>

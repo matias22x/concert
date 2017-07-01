@@ -14,5 +14,4 @@ public interface ServicioReunion {
 	public Reunion reunionporidService(Long idReunion);
 	public void actualizarReunionService(Reunion reunion);
 	public List<Reunion> listaDeReunionesEnPerfilService(Usuario usuarioLog);
-	public List<Usuario> listaUsuariosReunionService(Long idReunion);
 }

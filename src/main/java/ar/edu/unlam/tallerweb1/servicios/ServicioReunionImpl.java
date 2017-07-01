@@ -46,10 +46,5 @@ public class ServicioReunionImpl implements ServicioReunion {
 	public List<Reunion> listaDeReunionesEnPerfilService(Usuario usuarioLog){
 		return reunionDao.listaDeReunionesEnPerfilDao(usuarioLog);
 	}
-	
-	@Override
-	public List<Usuario> listaUsuariosReunionService(Long idReunion) {
-		return reunionDao.listaUsuariosReunionDao(idReunion);
-	}
 
 }

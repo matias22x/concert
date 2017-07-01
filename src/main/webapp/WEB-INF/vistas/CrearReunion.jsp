@@ -50,6 +50,8 @@
 			</div>
 
 		</form:form>	     
+	
+		
 		
 	</div>
 	<!-- FIN FORMULARIO -->

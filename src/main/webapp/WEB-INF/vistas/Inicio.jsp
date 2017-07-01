@@ -53,35 +53,24 @@
 				<h2>Últimos recitales</h2>
 				<div id="contenidoUltimosRecitales" class="contenidoHome">
 					<c:forEach items="${miListaDeEvento}" var="evento">
-						<div class="col-md-4 tituloContenido">
-							<a href="detalleEventos?idEvento=${evento.getidEvento()}"><img src="images/imagen.jpg" class="img-responsive"></a>
-							<p><b>${evento.getNombreEvento()}</b></p>
-							<p><b>${evento.getFechaEvento()}</b> - ${evento.getDescripcionEvento()} <a href="detalleEventos?idEvento=${evento.getidEvento()}">
-							<div class="clearfix"></div>
-							<b>Leer más...</b></a></p>
-						</div>
+					    <div class="contenedorEventosDestacados">
+        
+					        <a href="detalleEventos?idEvento=${evento.getidEvento()}"><img src="images/imagen.jpg" class="img-responsive"></a>
+					        
+					        <p class="tituloEvento">${evento.getNombreEvento()} </p>
+					        
+					        <p class="textoEvento">${evento.getFechaEvento()}</p>
+					        <p class="lugarEvento">${evento.getDescripcionEvento()}</p>
+					        
+					        
+					        <a href="detalleEventos?idEvento=${evento.getidEvento()}">LEER MAS...</a>
+        
+    					</div>
 					</c:forEach>																				
 				</div>
 			</div>
 			<div type="clearfix"></div>
-			
-			<!-- DESTACADOS -->
-<!-- 			<div id="destacados" class="col-md-12"> -->
-<!-- 				<h2>&nbsp</h2> -->
-<!-- 				<hr> -->
-<!-- 				<h2>Destacados</h2> -->
-<!-- 					<div id="contenidoUltimosRecitales" class="contenidoHome"> -->
-<%-- 						<c:forEach items="${miListaDeEvento}" var="evento"> --%>
-<!-- 							<div class="col-md-4 tituloContenido"> -->
-<%-- 								<a href="detalleEventos?idEvento=${evento.getidEvento()}"><img src="images/imagen.jpg" class="img-responsive"></a> --%>
-<%-- 								<p><b>${evento.getNombreEvento()}</b></p> --%>
-<%-- 								<p><b>${evento.getFechaEvento()}</b> - ${evento.getDescripcionEvento()} <a href="detalleEventos?idEvento=${evento.getidEvento()}"> --%>
-<!-- 								<div class="clearfix"></div> -->
-<!-- 								<b>Leer más...</b></a></p> -->
-<!-- 							</div> -->
-<%-- 						</c:forEach>																				 --%>
-<!-- 					</div>	 -->
-<!-- 			</div>			 -->
+
 	</div><!-- cuerpo -->
 	<div class="clearfix"></div>
 <%@ include file="Footer.jsp" %>

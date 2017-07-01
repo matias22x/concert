@@ -76,5 +76,3 @@
 	</div>
 	<!-- FIN FORMULARIO -->
 	
-	<!--FOOTER-->
-<%@ include file="Footer.jsp" %>

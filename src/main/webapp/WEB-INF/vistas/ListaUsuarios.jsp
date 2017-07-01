@@ -1,41 +1,5 @@
 <%@ include file="Header.jsp" %>
 
-	<div><!-- header -->
-            <div class="text-left col-md-6">
-                <a href="Inicio.html"><img src="images/logo.png" id="logo"></a>
-            </div>
-            <div class="text-right col-md-2 col-md-offset-4">
-                <form class="navbar-form navbar-left">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Buscar">
-                    <div class="input-group-btn">
-                      <button class="btn btn-default" type="submit">
-                        <span class="glyphicon glyphicon-search"></span>
-                      </button>
-                    </div>
-                  </div>
-                </form>     
-            </div>  
-            <div class="clearfix"></div>
-            <div>
-                <nav class="navbar navbar-inverse">
-                  <div class="container-fluid">
-                        <div class="col-md-12">
-                            <div class="navbar-header">
-                              <a class="navbar-brand" href="IndexAdmin">Inicio</a>
-                            </div>
-                            <ul class="nav navbar-nav">
-                              <li><a href="CrearEvento">Eventos</a></li>
-                              <li><a href="#">Reuniones</a></li>
-                              <li><a href="ListaUsuarios">Usuarios</a></li>
-                            </ul>
-                        </div>
-                                 
-                  </div>          
-                </nav>
-            </div>
-        </div><!-- header -->
-
         <!-- cuerpo -->
         
         <table class="table table-success">

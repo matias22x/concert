@@ -78,15 +78,4 @@ public class ReunionDaoImpl implements ReunionDao{
 		return listaReunionesEnPerfil;
 	}
 	
-	@Transactional(readOnly = true)
-	@Override
-	public List<Usuario> listaUsuariosReunionDao(Long idReunion) {
-		Session session = sessionFactory.getCurrentSession();
-		List<Usuario> listaUsuarios = session.createCriteria(Reunion.class)
-				.createAlias("usuario.getUsuario()","u")
-				.add(Restrictions.eq("u.getId()", idReunion)).list();
-		return listaUsuarios;
-		
-	}
-	
 }

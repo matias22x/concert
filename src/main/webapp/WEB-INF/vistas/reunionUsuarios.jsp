@@ -84,17 +84,14 @@
                     </table>
                 </div>
             </div>
-            <div class="form-group botones">
-				<button class="btn btn-primary boton" type="submit">Unirse a Reunión</button>
-			</div>
+            
+            <button type="submit">
+                 Unirse a Reunión
+            </button>
        </form:form>
-
-    <c:forEach items="${usuariosReunion}" var="reunion">                
-    	<div class="col-md-4 tituloContenido">
-			<p><b><a>Matias Heredia<a></a></b> - brbrbr@live.com.ar</p>
-			<div class="clearfix"></div>
-	   </div>
-    </c:forEach>      
+   
+    <!--<c:forEach items="${miListaDeReunion}" var="reunion">                
+          </c:forEach>-->      
           
                 
 

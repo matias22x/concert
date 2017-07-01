@@ -1,5 +1,4 @@
 <%@ include file="Header.jsp" %>
-
         <!-- cuerpo -->
 		<!-- FORMULARIO -->
 	<div class="container" id="contenedor_form">
