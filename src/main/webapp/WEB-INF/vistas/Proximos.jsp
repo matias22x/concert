@@ -57,5 +57,6 @@
         <a href="">LEER MAS...</a>
         
     </div>
+    </div>
     	<div class="clearfix"></div>
 <%@ include file="Footer.jsp" %>
