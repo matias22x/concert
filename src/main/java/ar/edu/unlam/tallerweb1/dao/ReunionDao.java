@@ -14,5 +14,6 @@ public interface ReunionDao {
 	public Reunion datosReunionDAO(Long idReunion);
 	public void actualizarReunionDao(Reunion reunion);
 	public List<Reunion> listaDeReunionesEnPerfilDao(Usuario usuarioLog);
+	public List<Reunion> busquedaReunionesDao(String data);
 	
 }

@@ -29,18 +29,15 @@
 				<hr>
 				<h2>Resultados para Reuniones: </h2>
 				<div id="contenidoUltimosRecitales" class="contenidoHome">
-					<c:forEach items="${eventosEncontrados}" var="evento">
+					<c:forEach items="${reunionesEncontradas}" var="reunion">
 					    <div class="contenedorEventosDestacados">
         
-					        <a href="detalleEventos?idEvento=${evento.getidEvento()}"><img src="images/imagen.jpg" class="img-responsive"></a>
+					        <a href="reunionUsuarios?idReunion=${reunion.getidReunion()}"><img src="images/imagen.jpg" class="img-responsive"></a>
 					        
-					        <p class="tituloEvento">${evento.getNombreEvento()} </p>
+					        <p class="tituloEvento">${reunion.getNombreReunion()} </p>	
+					        <p class="lugarEvento">${reunion.getDireccionReunion()} - ${reunion.getFechaReunion()} / ${reunion.getHoraReunion()}</p>		        
 					        
-					        <p class="textoEvento">${evento.getFechaEvento()}</p>
-					        <p class="lugarEvento">${evento.getDescripcionEvento()}</p>
-					        
-					        
-					        <a href="detalleEventos?idEvento=${evento.getidEvento()}">LEER MAS...</a>
+					        <a href="reunionUsuarios?idReunion=${reunion.getidReunion()}">LEER MAS...</a>
         
     					</div>
 					</c:forEach>																				

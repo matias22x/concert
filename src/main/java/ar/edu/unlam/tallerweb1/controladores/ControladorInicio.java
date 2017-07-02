@@ -14,14 +14,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Evento;
+import ar.edu.unlam.tallerweb1.modelo.Reunion;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEvento;
+import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
+import ar.edu.unlam.tallerweb1.servicios.ServicioReunion;
 
 @Controller
 public class ControladorInicio {
 	
 	@Inject
+	private ServicioLogin servicioLogin;
+	
+	@Inject
+	private ServicioReunion servicioreunion;
+	
+	@Inject
 	private ServicioEvento servicioEvento;
-
+	
 	@RequestMapping(path = "/Inicio")
 	public ModelAndView Inicio() {
 		
@@ -50,5 +60,14 @@ public class ControladorInicio {
 	@RequestMapping(path = "/Destacados")
 	public ModelAndView Destacados() {
 	return new ModelAndView ("Destacados");
+	}
+	
+	@RequestMapping(path="/busqueda", method = RequestMethod.POST)
+	public ModelAndView busqueda(@RequestParam("data")String data){
+		ModelMap modelo = new ModelMap();
+		
+		modelo.put("eventosEncontrados",servicioEvento.busquedaEventos(data));
+		modelo.put("reunionesEncontradas",servicioreunion.busquedaReuniones(data));
+		return new ModelAndView("ResultadoBusqueda",modelo);
 	}
 }

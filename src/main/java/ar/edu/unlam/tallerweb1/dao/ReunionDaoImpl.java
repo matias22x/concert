@@ -78,4 +78,13 @@ public class ReunionDaoImpl implements ReunionDao{
 		return listaReunionesEnPerfil;
 	}
 	
+	@Transactional(readOnly = true)
+	@Override
+	public List<Reunion> busquedaReunionesDao(String data) {
+		Session session = sessionFactory.getCurrentSession();
+		List<Reunion> reunionList = session.createCriteria(Reunion.class)
+				.add(Restrictions.like("nombreReunion", "%"+data+"%")).list();
+		return reunionList;
+	}
+	
 }

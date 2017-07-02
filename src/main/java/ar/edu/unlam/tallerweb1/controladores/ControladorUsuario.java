@@ -113,15 +113,7 @@ public class ControladorUsuario {
 		  return new ModelAndView("redirect:/Inicio");
 		 }
 
-		@RequestMapping(path="/busqueda", method = RequestMethod.POST)
-		public ModelAndView busqueda(@RequestParam("data")String data){
-			ModelMap modelo = new ModelMap();
-			
-			modelo.put("eventosEncontrados",servicioevento.busquedaEventos(data));
-//			modelo.put("reunionesEncontradas",ServicioReunion.busquedaReuniones(data));
-//			modelo.put("usuariosEncontrados",ServicioLogin.busquedaUsuarios(data));
-			return new ModelAndView("ResultadoBusqueda",modelo);
-		}
+
 //	
 //		/*Muestro datos a ListaUsuarios*/
 //		@RequestMapping(path="/ListaUsuarios", method= RequestMethod.POST)

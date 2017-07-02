@@ -46,5 +46,10 @@ public class ServicioReunionImpl implements ServicioReunion {
 	public List<Reunion> listaDeReunionesEnPerfilService(Usuario usuarioLog){
 		return reunionDao.listaDeReunionesEnPerfilDao(usuarioLog);
 	}
+	
+	@Override
+	public List<Reunion> busquedaReuniones(String data){
+		return reunionDao.busquedaReunionesDao(data);
+	}
 
 }
