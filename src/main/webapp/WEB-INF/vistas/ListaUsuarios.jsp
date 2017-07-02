@@ -40,5 +40,3 @@
 				</c:forEach>
 		 </tbody>
 	</table>
-        
-     <%@ include file="Footer.jsp" %>

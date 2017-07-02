@@ -50,8 +50,10 @@
 						  <li><a href="cerrarSesion">Cerrar Sesión</a></li>
 				        </c:if>							
 						<c:if test="${sesionUsuario.getNombre() == 'admin'}">
-							<li><a href="IndexAdmin">Eventos</a></li>
 							<li><a href="CrearEvento">Crear Eventos</a></li>
+							<li><a href="IndexAdmin">Ver Eventos</a></li>
+                            <li><a href="ListaReuniones">Ver Reuniones</a></li>
+                            <li><a href="ListaUsuarios">Ver Usuarios</a></li>
 						  	<li><a href="cerrarSesion">Cerrar Sesión</a></li>							
 						</c:if>				        
 						<c:if test="${empty sesionUsuario.getNombre()}">
