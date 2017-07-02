@@ -57,7 +57,7 @@ public class EventoDaoImpl implements EventoDao{
 	public List<Evento> busquedaEventosDAO(String data) {
 		Session session = sessionFactory.getCurrentSession();
 		List<Evento> eventosList = session.createCriteria(Evento.class)
-				.add(Restrictions.eq("nombreEvento", data)).list();
+				.add(Restrictions.like("nombreEvento", "%"+data+"%")).list();
 		return eventosList;
 	}
 }
