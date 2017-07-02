@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.hibernate.Session;
@@ -44,5 +46,23 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(usuario);		
 	}
+	
+	//Usuarios en ListaUsuarios
+	@Transactional(readOnly = true)
+	@Override
+	public List<Usuario> listUsuariosDAO() {
+		Session session = sessionFactory.getCurrentSession();
+		List<Usuario> usuariosList = session.createCriteria(Usuario.class).list();
+		return usuariosList;
+	}
+
+	//Obtener Usuario por id
+		@Transactional(readOnly = true)
+		@Override
+		public Usuario usuarioporid(Long idUsuario){
+			Session session = sessionFactory.getCurrentSession();
+			return session.get(Usuario.class,idUsuario);
+			 
+		}
 
 }

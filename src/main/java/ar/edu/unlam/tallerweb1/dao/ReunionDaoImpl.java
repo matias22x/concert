@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -31,25 +32,39 @@ public class ReunionDaoImpl implements ReunionDao{
 		session.save(reunion);		
 	}
 	
+	//Listar Reuniones por Evento
 	@Transactional(readOnly = true)
 	@Override
 	public List<Reunion> listReunionesDAO(Long idevento) {
 		Session session = sessionFactory.getCurrentSession();
 		List<Reunion> listaReuniones = session.createCriteria(Reunion.class)
 				.createAlias("evento", "eventoBuscado")
-				.add(Restrictions.eq("eventoBuscado.idEvento", idevento)).list();
+				.add(Restrictions.eq("eventoBuscado.idEvento", idevento))
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		return listaReuniones;
 		
 	}
 	
+	//Agregar un usuario en la reunion , esto es al crear una reunion
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
 	@Override
 	public void agregarUsuarioAReunionDAO(Reunion reunion,Usuario usuario){
 		Session session = sessionFactory.getCurrentSession();
 		Set<Usuario> usuarioAgregado = new HashSet<Usuario>();
 		usuarioAgregado.add(usuario);
-		reunion.setUsuario(usuarioAgregado);
+		reunion.setUsuarios(usuarioAgregado);
 		session.save(reunion);
+	}
+	
+	//Agregar un usuario en una reunion creada
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
+	@Override
+	public void unirUsuarioAReunionDAO(Reunion reu,Usuario usu){
+		Session session = sessionFactory.getCurrentSession();
+		Set<Usuario> usuarioAgregado = reu.getUsuarios();
+		usuarioAgregado.add(usu);
+		reu.setUsuarios(usuarioAgregado);
+		session.save(reu);
 	}
 	
 	@Transactional(readOnly = true)
@@ -67,15 +82,36 @@ public class ReunionDaoImpl implements ReunionDao{
 		session.update(reunion);
 	}
 	
-	/* Mostrar Lista de Reuniones en PerfilUsuario*/
+	/* Mostrar Lista de Reuniones en PerfilUsuario dependiendo del usuario*/
 	@Transactional(readOnly = true)
 	@Override
 	public List<Reunion> listaDeReunionesEnPerfilDao(Usuario usuarioLog) {
 		Session session = sessionFactory.getCurrentSession();
 		List<Reunion> listaReunionesEnPerfil = session.createCriteria(Reunion.class)
-				.createAlias("usuario", "usuA")
-				.add(Restrictions.eq("usuA.getId()", usuarioLog.getId())).list();
+				.createAlias("usuarios", "usuA")
+				.add(Restrictions.eq("usuA.id", usuarioLog.getId()))
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		return listaReunionesEnPerfil;
+		
+	}
+	
+	//Obtener una reunion por el id de Evento*
+	@Transactional(readOnly = true)
+	@Override
+	public Reunion reunionporid(Long idevento){
+		Session session = sessionFactory.getCurrentSession();
+		return session.get(Reunion.class,idevento);
+		 
+	}
+	
+	//Reuniones en ListaReuniones (IndexAdmin)
+	@Transactional(readOnly = true)
+	@Override
+	public List<Reunion> listReunionesDAOenPerfil(Long idevento) {
+		Session session = sessionFactory.getCurrentSession();
+		List<Reunion> reunionesList = session.createCriteria(Reunion.class)
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+		return reunionesList;
 	}
 	
 	@Transactional(readOnly = true)

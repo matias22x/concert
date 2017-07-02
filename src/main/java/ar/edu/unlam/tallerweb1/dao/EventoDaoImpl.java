@@ -52,6 +52,16 @@ public class EventoDaoImpl implements EventoDao{
 		 
 	}
 	
+	//Actualizar el mostrarEvento
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
+	@Override
+	public void actualizarEstadoEventoDAO(Evento evento,String mostrar){
+		Session session = sessionFactory.getCurrentSession();
+		evento.setMostrarEvento(mostrar);
+		session.update(evento);
+		
+	}
+	
 	@Transactional(readOnly = true)
 	@Override
 	public List<Evento> busquedaEventosDAO(String data) {

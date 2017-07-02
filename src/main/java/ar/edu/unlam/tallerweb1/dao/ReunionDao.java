@@ -15,5 +15,11 @@ public interface ReunionDao {
 	public void actualizarReunionDao(Reunion reunion);
 	public List<Reunion> listaDeReunionesEnPerfilDao(Usuario usuarioLog);
 	public List<Reunion> busquedaReunionesDao(String data);
+	/*Muestro reuniones en IndexAdmin (Reuniones) */
+	public List<Reunion> listReunionesDAOenPerfil(Long idevento);
+	public Reunion reunionporid(Long idevento);
+	
+	//Usuario uniendose a reunion ya creada
+	public void unirUsuarioAReunionDAO(Reunion reu,Usuario usu);
 	
 }

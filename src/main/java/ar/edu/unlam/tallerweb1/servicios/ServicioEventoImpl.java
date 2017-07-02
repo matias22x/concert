@@ -36,6 +36,11 @@ public class ServicioEventoImpl implements ServicioEvento {
 	}
 	
 	@Override
+	public void actualizarEstadoEventoService(Evento evento,String mostrar){
+		eventoDao.actualizarEstadoEventoDAO(evento, mostrar);
+	}
+	
+	@Override
 	public List<Evento> busquedaEventos(String data) {
 		return eventoDao.busquedaEventosDAO(data);
 	}

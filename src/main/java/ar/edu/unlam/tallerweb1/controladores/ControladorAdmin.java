@@ -45,6 +45,20 @@ public class ControladorAdmin {
 		
 	}
 	
+	@RequestMapping(path="/ActualizarEstadoEvento")
+	public ModelAndView actualizarMostrarDelEvento(@RequestParam("id") Long idEv,@RequestParam("m") String mostrarE){
+		Evento eventM = servicioEvento.eventoporidService(idEv);
+		String mostrarCSI = "no";
+		String mostrarCNO = "si";
+		if(mostrarE.contains("si")){
+			servicioEvento.actualizarEstadoEventoService(eventM, mostrarCSI);
+			
+		}else if(mostrarE.contains("no")){
+			servicioEvento.actualizarEstadoEventoService(eventM, mostrarCNO);
+		}
+		return new ModelAndView("redirect:/IndexAdmin");
+	}
+	
 	@RequestMapping(path="/IndexAdmin")
 	public ModelAndView IndexAdmin(){ 
 

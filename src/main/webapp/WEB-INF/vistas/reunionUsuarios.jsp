@@ -1,8 +1,8 @@
- <%@ include file="Header.jsp" %>
+<%@ include file="Header.jsp" %>
 <body>
 
         <!-- cuerpo -->
-        <form:form action="reunionUsuarios?idReunion=${idR}" method="POST">
+        
         <div class="container">
             <h2 style="text-align: center;">${datosReunion.getNombreReunion()}</h2>
             <hr>
@@ -85,10 +85,10 @@
                 </div>
             </div>
             
-            <button type="submit">
+            <a href="unirUsuarioAReunion?idReunion=${idR}">
                  Unirse a Reunión
-            </button>
-       </form:form>
+            </a>
+       
    
     <!--<c:forEach items="${miListaDeReunion}" var="reunion">                
           </c:forEach>-->      

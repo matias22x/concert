@@ -15,4 +15,14 @@ public interface ServicioReunion {
 	public void actualizarReunionService(Reunion reunion);
 	public List<Reunion> listaDeReunionesEnPerfilService(Usuario usuarioLog);
 	public List<Reunion> busquedaReuniones(String data);
+	
+	
+	/*Mostrar Lista Reuniones en IndexAdmin*/
+	public void crearReunionServicePerfil(Reunion reunion);
+	public List<Reunion> listReunionesServicePerfil(Reunion reunion);
+
+	public List<Reunion> listReunionesServicePerfil();
+	
+	//Unir usuario a reunion creada
+	public void unirUsuarioAReunionService(Reunion reu,Usuario usu);
 }

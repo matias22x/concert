@@ -1,11 +1,12 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,62 +33,18 @@ public class Usuario {
 	private String apellido;
 	private String localidad;
 	private String password2;
-//	@ManyToMany(cascade=CascadeType.ALL)  
-//    @JoinTable(name="usuario_reunion", joinColumns=@JoinColumn(name="id_usuario"), inverseJoinColumns=@JoinColumn(name="id_reunion"))
-//	private Set<Reunion> reunion;
 	
-	//Agregando la lista de amigos
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="lista_amigos",
-	 joinColumns=@JoinColumn(name="usuarioId"),
-	 inverseJoinColumns=@JoinColumn(name="amigoId")
-	)
-//	private List<Usuario> listaUsuarios;
-//
-//	@ManyToMany(cascade=CascadeType.ALL)
-//	@JoinTable(name="lista_amigos",
-//	 joinColumns=@JoinColumn(name="amigoId"),
-//	 inverseJoinColumns=@JoinColumn(name="usuarioId")
-//	)
-//	private List<Usuario> listaAmigos2;
-//	
-//	
-//	
-//	public List<Usuario> getListaUsuarios() {
-//		return listaUsuarios;
-//	}
-//	public void setListaUsuarios(List<Usuario> listaUsuarios) {
-//		this.listaUsuarios = listaUsuarios;
-//	}
-//	public List<Usuario> getListaAmigos() {
-//		return listaAmigos2;
-//	}
-//	public void setListaAmigos(List<Usuario> listaAmigos) {
-//		this.listaAmigos2 = listaAmigos;
-//	}
-	//	@ManyToOne(cascade= CascadeType.ALL)
-//	private Usuario usuario;
-//	@OneToMany(mappedBy="usuario")
-//	private List<Usuario> listaAmigos;
-//	
-//	public Usuario getUsuario() {
-//		return usuario;
-//	}
-//	public void setUsuario(Usuario usuario) {
-//		this.usuario = usuario;
-////	}
-//	public List<Usuario> getListaAmigos() {
-//		return listaAmigos;
-//	}
-//	public void setListaAmigos(List<Usuario> listaAmigos) {
-//		this.listaAmigos = listaAmigos;
-//	}
-//	public Set<Reunion> getReunion() {
-//		return reunion;
-//	}
-//	public void setReunion(Set<Reunion> reunion) {
-//		this.reunion = reunion;
-//	}
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "usuarios")  
+	private Set<Reunion> reuniones = new HashSet<Reunion>();
+	
+
+
+	public Set<Reunion> getReuniones() {
+		return reuniones;
+	}
+	public void setReuniones(Set<Reunion> reuniones) {
+		this.reuniones = reuniones;
+	}
 	//La convencion dice que todos los atributos son persistibles a menos que le pongas @Transent
 	//ID
 	public Long getId() {

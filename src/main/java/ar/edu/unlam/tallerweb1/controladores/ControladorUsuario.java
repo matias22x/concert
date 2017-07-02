@@ -113,43 +113,13 @@ public class ControladorUsuario {
 		  return new ModelAndView("redirect:/Inicio");
 		 }
 
-
-//	
-//		/*Muestro datos a ListaUsuarios*/
-//		@RequestMapping(path="/ListaUsuarios", method= RequestMethod.POST)
-//		public ModelAndView CargarDatosUsuarios(@ModelAttribute("usuario") Usuario usuario){
-//			
-//			if(usuario.getId() == 0){
-//				return new ModelAndView("ListaUsuarios");
-//			}else{
-//				
-//				ModelMap modelo = new ModelMap();
-//				modelo.put("usuarioRegistrado", usuario);
-//				return new ModelAndView("ListaUsuarios",modelo);
-//			}
-//		}
-//		
-//		/*Creo la lista miListaUsuarios*/
-//		@RequestMapping(path="/ListaUsuarios")
-//		public ModelAndView ListaUsuarios(Usuario usuarioform){ 
-//			if(usuarioform.getEmail() == ""){
-//			listaUsuarios.add(usuarioform);
-//			}
-//			ModelMap modelo = new ModelMap();
-//			modelo.put("miListaUsuarios", listaUsuarios);
-//			return new ModelAndView("ListaUsuarios",modelo);
-//		 }
-		
-
-		 //Lista de Amigos
-		/*	@RequestMapping(path = "/ListaAmigos")
-			public ModelAndView ListaAmigos() {
-				Usuario usuario = new Usuario();
-				ModelMap modelo = new ModelMap();
-				modelo.put("sesionUsuario",usuario);		
-				
-				return new ModelAndView ("ListaAmigos",modelo);
-			} */
+		@RequestMapping(path="/ListaUsuarios")
+		public ModelAndView ListaAmigos(){ 
+			
+			ModelMap model = new ModelMap();
+			model.put("miListaDeUsuario", servicioLogin.listUsuariosService());
+			return new ModelAndView("ListaUsuarios",model);
+		}
 		
 		@RequestMapping(path = "/ListaAmigos")
 		public ModelAndView Inicio() {

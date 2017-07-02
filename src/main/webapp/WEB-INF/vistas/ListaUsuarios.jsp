@@ -1,6 +1,6 @@
 <%@ include file="Header.jsp" %>
 
-        <!-- cuerpo -->
+     <!-- cuerpo -->
         
         <table class="table table-success">
 			<thead>
@@ -14,7 +14,7 @@
 				</tr>
 			</thead>
 			<tbody style="background-color: pink;">
-				<c:forEach items="${miListaUsuarios}" var="usuario">
+				<c:forEach items="${miListaDeUsuario}" var="usuario">
 					<tr class="success">
 						<td>
 							${usuario.getId() }

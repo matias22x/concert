@@ -55,7 +55,8 @@ public class ControladorReunion {
 			@ModelAttribute("sesionUsuario") Usuario usuLogeado,@RequestParam("idEvento") Long idEventR){
 		Evento eventR = servicioEvento.eventoporidService(idEventR);
 		reunion.setEvento(eventR);
-		servicioReunion.agregarUsuarioAReunionService(reunion, usuLogeado);
+		servicioReunion.crearReunionService(reunion);
+		servicioReunion.unirUsuarioAReunionService(reunion, usuLogeado);
 		return new ModelAndView("redirect:/Inicio");
 		
 	}
@@ -79,44 +80,23 @@ public class ControladorReunion {
 	  return new ModelAndView("reunionUsuarios",modelo);	   
 	 }
 	
-	@RequestMapping(path="/reunionUsuarios", method= RequestMethod.POST)
+	//Unir usuario a reunion creada
+	@RequestMapping(path="/unirUsuarioAReunion")
 	public ModelAndView cargarUsuarioEnreunion(@RequestParam("idReunion") Long idReunion,@ModelAttribute("sesionUsuario") Usuario us){
-		ModelMap model = new ModelMap();
+		
 		Reunion reu = servicioReunion.reunionporidService(idReunion);
-		Set<Usuario> usuarioAgregado = new HashSet<Usuario>();
-		usuarioAgregado.add(us);
-		reu.setUsuario(usuarioAgregado);
-		servicioReunion.actualizarReunionService(reu);
-//		servicioReunion.agregarUsuarioAReunionService(reu, us);
+		
+		servicioReunion.unirUsuarioAReunionService(reu, us);
 		return new ModelAndView("redirect:/Inicio");
 	}
 	/* -------  */
 	
-	
-	/*MUESTRO LISTA DE REUNIONES EN DetalleReunion*/
-	/*Muestro datos a PerfilUsuario*/
-	/*@RequestMapping(path="/detalleReunion", method= RequestMethod.POST)
-	public ModelAndView CargarDatosReuniones(@ModelAttribute("reunion") Reunion reunion){
+
+	@RequestMapping(path="/ListaReuniones")
+	public ModelAndView ListaReuniones(){ 
 		
-		if(reunion.getidReunion() == 0){
-			return new ModelAndView("detalleReunion");
-		}else{
-			
-			ModelMap modelo = new ModelMap();
-			modelo.put("reunionCreada", reunion);
-			return new ModelAndView("detalleReunion",modelo);
-		}
-	}*/
-	
-	/*Creo la lista miListaReunion*/
-	/*@RequestMapping(path="/detalleReunion", method = RequestMethod.GET)
-	public ModelAndView detalleReuniones(Reunion reunionform){ 
-		if(reunionform.getidReunion() != 0){
-			ReunionesPorUsuario.add(reunionform);
-		} 	 
-		ModelMap modelo = new ModelMap();
-		modelo.put("miListaDeReuniones", ReunionesPorUsuario);
-		return new ModelAndView("detalleReunion",modelo);
-	 }*/
-	
+		ModelMap model = new ModelMap();
+		model.put("miListaDeReuniones", servicioReunion.listReunionesServicePerfil());
+		return new ModelAndView("ListaReuniones",model);
+	 }
 }

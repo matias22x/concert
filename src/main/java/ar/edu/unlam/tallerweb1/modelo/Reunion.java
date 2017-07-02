@@ -1,10 +1,11 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 
 
 @Entity
@@ -34,20 +39,24 @@ public class Reunion {
 	private String mostrarReunion;
 	
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
+	@Cascade(value = CascadeType.ALL)
 	@JoinColumn(name = "id_evento", nullable = false)
 	private Evento evento;
 	
-	@ManyToMany(cascade=CascadeType.ALL)  
-    @JoinTable(name="usuario_reunion", joinColumns=@JoinColumn(name="id_reunion"), inverseJoinColumns=@JoinColumn(name="id_usuario"))
-	private Set<Usuario> usuario;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@Cascade(value = CascadeType.ALL)
+    @JoinTable(name="usuario_reunion", joinColumns={@JoinColumn(name="id_reunion",referencedColumnName="idReunion")}, 
+    inverseJoinColumns={@JoinColumn(name="id_usuario",referencedColumnName = "id")})
+	private Set<Usuario> usuarios = new HashSet<Usuario>();
 	
 	
-	public Set<Usuario> getUsuario() {
-		return usuario;
+	
+	public Set<Usuario> getUsuarios() {
+		return usuarios;
 	}
-	public void setUsuario(Set<Usuario> usuario) {
-		this.usuario = usuario;
+	public void setUsuarios(Set<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 	public Evento getEvento() {
 		return evento;
