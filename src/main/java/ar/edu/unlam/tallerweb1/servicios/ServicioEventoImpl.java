@@ -34,4 +34,9 @@ public class ServicioEventoImpl implements ServicioEvento {
 	public Evento eventoporidService(Long idEvent) {
 		return eventoDao.eventoporid(idEvent);
 	}
+	
+	@Override
+	public List<Evento> busquedaEventos(String data) {
+		return eventoDao.busquedaEventosDAO(data);
+	}
 }

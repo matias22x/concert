@@ -47,6 +47,12 @@
 						<ul class="nav navbar-nav">
 						  <li><a href="Destacados">Destacados</a></li>
 						  <li><a href="Proximos">Próximos</a></li>
+						  <li>
+						  <form method="POST" action="busqueda" >
+						  	<input name="data" type="text" class="input form-control"/>
+						  	<input type="submit" value="Buscar">
+						  </form>
+						  </li>
 						</ul>
 					</div>
 					<div class="col-md-6">

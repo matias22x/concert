@@ -9,4 +9,5 @@ public interface ServicioEvento {
 	public List<Evento> listEventosService();
 	public List<Evento> listEventosInicioService();
 	public Evento eventoporidService(Long idEvent);
+	public List<Evento> busquedaEventos(String data);
 }

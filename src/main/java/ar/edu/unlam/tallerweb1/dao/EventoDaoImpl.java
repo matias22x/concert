@@ -52,4 +52,12 @@ public class EventoDaoImpl implements EventoDao{
 		 
 	}
 	
+	@Transactional(readOnly = true)
+	@Override
+	public List<Evento> busquedaEventosDAO(String data) {
+		Session session = sessionFactory.getCurrentSession();
+		List<Evento> eventosList = session.createCriteria(Evento.class)
+				.add(Restrictions.eq("nombreEvento", data)).list();
+		return eventosList;
+	}
 }

@@ -10,6 +10,7 @@ public interface EventoDao {
 	public List<Evento> listEventosDAO();
 	public List<Evento> listEventosInicioDAO();
 	public Evento eventoporid(Long idEvent);
+	public List<Evento> busquedaEventosDAO(String data);
 }
 
 
