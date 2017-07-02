@@ -20,7 +20,7 @@ import ar.edu.unlam.tallerweb1.modelo.Evento;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEvento;
 
 @Controller
-//@SessionAttributes("listaEventos") 
+@SessionAttributes("sesionUsuario")
 public class ControladorAdmin {
 	
 	//List<Evento> miLista = new ArrayList<Evento>();
@@ -47,10 +47,11 @@ public class ControladorAdmin {
 	
 	@RequestMapping(path="/IndexAdmin")
 	public ModelAndView IndexAdmin(){ 
-		
-		ModelMap model = new ModelMap();
-		model.put("miListaDeEvento", servicioEvento.listEventosService());
-		return new ModelAndView("IndexAdmin",model);
+
+			ModelMap model = new ModelMap();
+			model.put("miListaDeEvento", servicioEvento.listEventosService());
+			return new ModelAndView("IndexAdmin",model);	
+
 	 }
 	
 //	@RequestMapping(path="/busqueda/{filtro}")

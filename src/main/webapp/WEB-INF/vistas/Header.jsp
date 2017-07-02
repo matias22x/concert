@@ -24,18 +24,6 @@
 		<div class="text-left col-md-6">
 			<a href="Inicio"><img src="images/logo.png" id="logo"></a>
 		</div>
-		<div class="text-right col-md-2 col-md-offset-4">
-			<form class="navbar-form navbar-left">
-			  <div class="input-group">
-				<input type="text" class="form-control" placeholder="Buscar">
-				<div class="input-group-btn">
-				  <button class="btn btn-default" type="submit">
-					<span class="glyphicon glyphicon-search"></span>
-				  </button>
-				</div>
-			  </div>
-			</form>		
-		</div>	
 		<div class="clearfix"></div>
 		<div>
 			<nav class="navbar navbar-inverse">
@@ -50,7 +38,7 @@
 						  <li>
 						  <form method="POST" action="busqueda" >
 						  	<input name="data" type="text" class="input form-control"/>
-						  	<input type="submit" value="Buscar">
+						  	<input type="submit" value="Buscar" class="btn btn-primary boton">
 						  </form>
 						  </li>
 						</ul>

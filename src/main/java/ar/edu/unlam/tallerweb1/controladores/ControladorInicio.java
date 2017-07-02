@@ -34,7 +34,7 @@ public class ControladorInicio {
 	
 	@RequestMapping(path = "/Inicio")
 	public ModelAndView Inicio() {
-		
+
 		ModelMap model = new ModelMap();
 		model.put("miListaDeEvento", servicioEvento.listEventosInicioService());
 		return new ModelAndView ("Inicio",model);
