@@ -25,4 +25,6 @@ public interface ServicioReunion {
 	
 	//Unir usuario a reunion creada
 	public void unirUsuarioAReunionService(Reunion reu,Usuario usu);
+	/*Muestro Lista Reuniones en PerfilUsuario desde Email*/
+	 public List<Reunion> listaDeReunionesEnPerfilServiceEmail(String Email);
 }

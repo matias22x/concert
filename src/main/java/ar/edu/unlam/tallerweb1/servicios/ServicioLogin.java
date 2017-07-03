@@ -15,4 +15,7 @@ public interface ServicioLogin {
 	public List<Usuario> listUsuariosService();
 		
 	public Usuario usuarioporidService(Long idUsuario);
+	
+	//validar registro unico mail
+	 public Usuario validarMail(String email);
 }

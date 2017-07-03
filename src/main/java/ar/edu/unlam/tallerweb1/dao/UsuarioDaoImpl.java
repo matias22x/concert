@@ -65,4 +65,15 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			 
 		}
 
+		//Validar registro de Mails
+		 @Transactional(readOnly = true)
+		 @Override
+		 public Usuario validarMailDao(String email){
+		  Session session = sessionFactory.getCurrentSession();
+		  return (Usuario) session.createCriteria(Usuario.class)
+		    .add(Restrictions.eq("email", email)).    //eq es para que sea igual //
+		    setMaxResults(1)
+		    .uniqueResult(); //devuelve un unico resultado
+		 }
+		
 }

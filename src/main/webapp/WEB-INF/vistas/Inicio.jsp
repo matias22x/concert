@@ -55,7 +55,7 @@
 					<c:forEach items="${miListaDeEvento}" var="evento">
 					    <div class="contenedorEventosDestacados">
         
-					        <a href="detalleEventos?idEvento=${evento.getidEvento()}"><img src="images/imagen.jpg" class="img-responsive"></a>
+					        <a href="detalleEventos?idEvento=${evento.getidEvento()}"><img src="images/${evento.getImagenPrincipalEvento()}" class="img-responsive"></a>
 					        
 					        <p class="tituloEvento">${evento.getNombreEvento()} </p>
 					        

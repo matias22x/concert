@@ -84,6 +84,13 @@ public class ServicioReunionImpl implements ServicioReunion {
 			
 			reunionDao.actualizarReunionDao(r);
 		}
+		
+	/*Muestro lista Reuniones en PerfilUSuario desde Email*/
+	 
+	 @Override
+	 public List<Reunion> listaDeReunionesEnPerfilServiceEmail(String email){
+	  return reunionDao.listaDeReunionesEnPerfilDaoEmail(email);
+	 }
 
 
 }

@@ -14,4 +14,6 @@ public interface UsuarioDao {
 	
 	public List<Usuario> listUsuariosDAO();
 	public Usuario usuarioporid(Long idUsuario);
+	//Validar que no se registre dos mails iguales
+	public Usuario validarMailDao(String email);
 }

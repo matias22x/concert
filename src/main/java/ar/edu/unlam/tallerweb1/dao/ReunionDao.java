@@ -22,4 +22,7 @@ public interface ReunionDao {
 	//Usuario uniendose a reunion ya creada
 	public void unirUsuarioAReunionDAO(Reunion reu,Usuario usu);
 	
+	/*Muestro reuniones en PerfilUsuario Email*/
+	 public List<Reunion> listaDeReunionesEnPerfilDaoEmail(String email);
+	
 }

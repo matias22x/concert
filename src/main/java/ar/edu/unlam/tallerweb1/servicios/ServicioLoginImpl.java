@@ -45,5 +45,10 @@ public class ServicioLoginImpl implements ServicioLogin {
 	public Usuario usuarioporidService(Long idUsuario) {
 		return usuarioDao.usuarioporid(idUsuario);
 	}
+	
+	//validar registro unico mail
+	 public Usuario validarMail(String email){
+	  return usuarioDao.validarMailDao(email);
+	 }
 
 }

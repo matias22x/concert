@@ -33,6 +33,7 @@ public class Usuario {
 	private String apellido;
 	private String localidad;
 	private String password2;
+	private String imagen;
 	
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "usuarios")  
 	private Set<Reunion> reuniones = new HashSet<Reunion>();
@@ -97,5 +98,11 @@ public class Usuario {
 		this.password2 = password2;
 	}
 	//FALTA PROVINCIA
+	public String getImagen() {
+		return imagen;
+	}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
 	
 }

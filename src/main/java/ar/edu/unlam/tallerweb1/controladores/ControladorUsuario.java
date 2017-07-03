@@ -37,23 +37,37 @@ public class ControladorUsuario {
 	private ServicioEvento servicioevento;
 	
 	//Cargo el modelo al Registro
-	@RequestMapping(path = "/RegistroUsuario")
-	public ModelAndView RegistroUsuario() {
-		Usuario usuario = new Usuario();
-		ModelMap modelo = new ModelMap();
-		modelo.put("usuarioRegistro",usuario);		
-		
-		return new ModelAndView ("RegistroUsuario",modelo);
-	}
+	  @RequestMapping(path = "/RegistroUsuario")
+	  public ModelAndView RegistroUsuario() {
+	   Usuario usuario = new Usuario();
+	   ModelMap modelo = new ModelMap();
+	   modelo.put("usuarioRegistro",usuario);  
+	   
+	   return new ModelAndView ("RegistroUsuario",modelo);
+	  }
+	
 	//Cargo los datos del registro a la vista de usuarios
 	@RequestMapping(path = "/RegistroUsuario2", method = RequestMethod.POST)
 	public ModelAndView cargarDatosUsuario(@ModelAttribute("usuarioRegistro")Usuario usuarioR) {
-		
-		
-		servicioLogin.registrarUsuario(usuarioR);
-		
-		return new ModelAndView ("RegistroCorrecto");
+	   
+	 String email = usuarioR.getEmail();
+	 if (servicioLogin.validarMail(email) == null){
+	    
+	  servicioLogin.registrarUsuario(usuarioR);
+	  return new ModelAndView ("RegistroCorrecto");
+	 }else{
+	  return new ModelAndView ("RegistroIncorrecto");
+	 }
+	   
 	}
+	  
+	
+	@RequestMapping(path = "/RegistroIncorrecto")
+	public ModelAndView RegistroIncorrecto() {  
+	   
+	 return new ModelAndView ("RegistroIncorrecto");
+	}
+
 	
 	@RequestMapping(path = "/RegistroCorrecto")
 	public ModelAndView RegistroCorrecto() {		
@@ -94,15 +108,14 @@ public class ControladorUsuario {
 	
 	
 	//Mostrar datos del USUARIO en PerfilUsuario
-		@RequestMapping(path="/PerfilUsuario", method = RequestMethod.GET)
-		public ModelAndView PerfilUsuario(@ModelAttribute("sesionUsuario") Usuario usuarioLog){
-			
-			ModelMap modelo = new ModelMap();
-			modelo.put("sesionUsuarioLog", usuarioLog);
-			modelo.put("reunionPorU",servicioreunion.listaDeReunionesEnPerfilService(usuarioLog));
-			return new ModelAndView("PerfilUsuario",modelo);	
-
-		}
+	  @RequestMapping(path="/PerfilUsuario", method = RequestMethod.GET)
+	  public ModelAndView PerfilUsuario(@ModelAttribute("sesionUsuario") Usuario usuarioLog){
+	   
+	   ModelMap modelo = new ModelMap();
+	    modelo.put("sesionUsuarioLog", usuarioLog);
+	    modelo.put("reunionPorU",servicioreunion.listaDeReunionesEnPerfilService(usuarioLog));
+	    return new ModelAndView("PerfilUsuario",modelo); 
+	  }
 		
 		//Cerrar Sesion
 		@RequestMapping(path="/cerrarSesion")
@@ -145,4 +158,14 @@ public class ControladorUsuario {
 			
 			return new ModelAndView ("ListaAmigos",model);
 		}
+		
+		//Lista Usuarios en MostrarPerfilUsuario
+		  @RequestMapping(path="/MostrarPerfilUsuario")
+		  public ModelAndView ListaAmigosEnPerfilUsuario(@RequestParam("email")String email){ 
+		   
+		   ModelMap model = new ModelMap();
+		   model.put("UsuarioPorEmail", servicioLogin.traerUsuarioPorEmail(email));
+		   model.put("reunionPorU",servicioreunion.listaDeReunionesEnPerfilServiceEmail(email));
+		   return new ModelAndView("MostrarPerfilUsuario",model);
+		   }
 }

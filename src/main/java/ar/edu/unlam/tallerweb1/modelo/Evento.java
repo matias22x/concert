@@ -19,7 +19,6 @@ public class Evento {
 	private String leyendaEvento;
 	private String artistaEvento;
 	private String descripcionEvento;
-	@Transient
 	private String imagenPrincipalEvento;
 	private String mostrarEvento;
 	
