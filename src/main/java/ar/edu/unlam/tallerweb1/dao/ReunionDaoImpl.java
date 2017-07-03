@@ -82,6 +82,13 @@ public class ReunionDaoImpl implements ReunionDao{
 		session.update(reunion);
 	}
 	
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
+	@Override
+	public void actualizarReunionDaoUsuario(Usuario u){
+		Session session = sessionFactory.getCurrentSession();
+		session.update(u);
+	}
+	
 	/* Mostrar Lista de Reuniones en PerfilUsuario dependiendo del usuario*/
 	@Transactional(readOnly = true)
 	@Override

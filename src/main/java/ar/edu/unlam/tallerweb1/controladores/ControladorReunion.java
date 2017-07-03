@@ -92,6 +92,15 @@ public class ControladorReunion {
 	/* -------  */
 	
 
+	@RequestMapping(path="/salirUsuarioDeReunion")
+	public ModelAndView salirUsuarioDeReunion(@RequestParam("idReunion") Long idReunion,@ModelAttribute("sesionUsuario") Usuario us){
+		
+		Reunion reu = servicioReunion.reunionporidService(idReunion);
+		
+		servicioReunion.sacarUsuariodeReunionService(reu, us);
+		return new ModelAndView("redirect:/Inicio");
+	}
+	
 	@RequestMapping(path="/ListaReuniones")
 	public ModelAndView ListaReuniones(){ 
 		

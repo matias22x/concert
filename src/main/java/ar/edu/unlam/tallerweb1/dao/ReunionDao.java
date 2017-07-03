@@ -13,6 +13,7 @@ public interface ReunionDao {
 	public void agregarUsuarioAReunionDAO(Reunion reunion,Usuario usuario);
 	public Reunion datosReunionDAO(Long idReunion);
 	public void actualizarReunionDao(Reunion reunion);
+	public void actualizarReunionDaoUsuario(Usuario u);
 	public List<Reunion> listaDeReunionesEnPerfilDao(Usuario usuarioLog);
 	public List<Reunion> busquedaReunionesDao(String data);
 	/*Muestro reuniones en IndexAdmin (Reuniones) */
@@ -21,7 +22,6 @@ public interface ReunionDao {
 	
 	//Usuario uniendose a reunion ya creada
 	public void unirUsuarioAReunionDAO(Reunion reu,Usuario usu);
-	
 	/*Muestro reuniones en PerfilUsuario Email*/
 	 public List<Reunion> listaDeReunionesEnPerfilDaoEmail(String email);
 	

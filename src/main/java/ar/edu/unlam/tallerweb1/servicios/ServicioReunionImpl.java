@@ -84,6 +84,16 @@ public class ServicioReunionImpl implements ServicioReunion {
 			
 			reunionDao.actualizarReunionDao(r);
 		}
+	
+		@Override
+		public void sacarUsuariodeReunionService(Reunion reu,Usuario usu){
+			Reunion r = reunionDao.datosReunionDAO(reu.getidReunion());
+			Usuario u = usuarioDao.usuarioporid(usu.getId());
+			u.getReuniones().remove(r);
+			r.getUsuarios().remove(u);
+			
+			reunionDao.actualizarReunionDaoUsuario(u);
+		}
 		
 	/*Muestro lista Reuniones en PerfilUSuario desde Email*/
 	 

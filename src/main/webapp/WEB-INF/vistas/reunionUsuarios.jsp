@@ -88,6 +88,9 @@
             <a href="unirUsuarioAReunion?idReunion=${idR}">
                  Unirse a Reunión
             </a>
+            <a href="salirUsuarioDeReunion?idReunion=${idR}">
+                 Salir de la reunión
+            </a>            
        
    
     <!--<c:forEach items="${miListaDeReunion}" var="reunion">                
