@@ -1,53 +1,19 @@
 <%@ include file="Header.jsp" %>
 <body>
-
         <!-- cuerpo -->
-        
+        <form:form action="reunionUsuarios?idReunion=${idR}" method="POST">
         <div class="container">
             <h2 style="text-align: center;">${datosReunion.getNombreReunion()}</h2>
             <hr>
             <div class="col-md-12">
 
                 <div class="col-md-6 img-responsive">
-                    
-                    <!-- CARROUSEL -->
-
-                    <!--img src="images/imagen.jpg" alt="" class="img-responsive"-->
-
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators">
-                          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                          <li data-target="#myCarousel" data-slide-to="1"></li>
-                          <li data-target="#myCarousel" data-slide-to="2"></li>
-                        </ol>
-
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
-                          <div class="item active">
-                            <img src="images/imagen.jpg" alt="" >
-                          </div>
-
-                          <div class="item">
-                            <img src="images/imagen.jpg" alt="" >
-                          </div>
-                        
-                          <div class="item">
-                            <img src="images/imagen.jpg" alt="" >
-                          </div>
-                        </div>
-
-                        <!-- Left and right controls -->
-                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                          <span class="glyphicon glyphicon-chevron-left"></span>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                          <span class="glyphicon glyphicon-chevron-right"></span>
-                          <span class="sr-only">Next</span>
-                        </a>
-                      </div>
-                </div>
+                   <div class="carousel-inner">
+                     <div class="item active">
+                       <img src="images/${datosReunion.getImagenPrincipalReunion()}">
+                     </div>
+                   </div>
+				</div>
 
                 <div class="col-md-6"> 
                     <table class="table" style="font-size: 16px; color: white;">
@@ -80,49 +46,96 @@
                                     ${datosReunion.getDescripcionReunion()}
                                 </td>
                             </tr>
+                            <tr>
+                            	<td>
+	                            	<c:if test="${not empty sesionUsuario.getNombre() }">
+	                            		<a href="unirUsuarioAReunion?idReunion=${idR}">
+							                 Unirse a Reunión
+							            </a>
+							            <a href="salirUsuarioDeReunion?idReunion=${idR}">
+							                 Salir de la reunión
+							            </a>  
+		                            	<!--button class="btn" type="submit">
+		                            	<span class="glyphicon glyphicon-thumbs-up"></span>
+							                 Unirse a Reunión
+							            </button-->
+							        </c:if>
+							        <c:if test="${!not empty sesionUsuario.getNombre() }">
+	                            		<a href="UnionIncorrecta">
+							                 Unirse a Reunión
+							            </a>
+							            <a href="salirUsuarioDeReunion?idReunion=${idR}">
+							                 Salir de la reunión
+							            </a>  
+							        </c:if>
+					            </td>
+					            
+					            <td>
+					            	&nbsp
+					            </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
-            
-            <a href="unirUsuarioAReunion?idReunion=${idR}">
-                 Unirse a Reunión
-            </a>
-            <a href="salirUsuarioDeReunion?idReunion=${idR}">
-                 Salir de la reunión
-            </a>            
+            </div>     
+	</div>  
+	</br>
+	<!-- Comentarios -->
+	 <c:if test="${not empty sesionUsuario.getNombre() }">
+	                     
+		<div class="container" style="background-color: #1e162d; border-radius: 15px;">
+		  <div class="row">
+		    <div class="col-lg-12">
+		    
+		    	<div class="col-md-8">
+			        <!-- Ver comentarios --> 
+			        <c:forEach items="${listComent}" var="comentarios">
+			        <h2 class="reviews">Comentarios</h2>
+			        
+			        <div class="comment-tabs">
+			            <div class="nav">
+			            </div>                        
+		                <ul class="media-list">
+		                  <li>
+		                    <div class="media-body">
+		                       <h4 class="media-heading text-uppercase reviews"><a href="">${comentarios.getUsuario().getNombre()}</a> </h4>
+		                       <h4>
+		                        <p class="media-comment">
+		                         ${comentarios.getDescripcionComentario()}
+		                        </p>
+		                       </h4>           
+		                    </div>
+		                  </li>       
+		                </ul> 
+				      </div>
+				 	</c:forEach> 
+				      <!-- Hacer un comentario -->
+				      </br>			      
+			        <form:form action="CrearComentario?idReunion=${idR}" method="POST" modelAttribute="comentario"> 
+			        <h1>Agregar Comentario</h1>
+			            <div class="form-group">
+			                <div class="col-sm-10">
+			                  <form:textarea path="descripcionComentario" id="nombreReunion" class="form-control" placeholder="¡Haga un comentario..!" rows="3"/>
+			                </div>
+			            </div>
+			            <div class="form-group">
+			                <div class="col-sm-10">                    
+			                    <button class="btn" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Enviar comentario</button>
+			                </div>
+			            </div>            
+			        </form:form>
+				</div>              
+				<!-- Lista de Usuarios -->
+				<div class="col-md-4">
+			            <h2 class="reviews">Lista de Usuarios</h2>
+			    <c:forEach items="${listaUsu}" var="u">
+			            <h4 class="media-heading text-uppercase reviews"><a href="">${u.getNombre()}</a> </h4>
+				</c:forEach>
+				</div>
+			</div>
+		 </div> 
+		</div>   
+ </c:if>        
+       </form:form>  
        
-        	
-        	
-<!--         Lista de Comentarios(Si no esta logueado no uede comentar)	 -->
-		 <div class="col-md-6"> 
-                    <table class="table" style="font-size: 16px; color: white;">
-					<tbody>
-                    	<c:forEach items="${listComent}" var="comentarios">	
-                    		<tr>
-                    			<td>${comentarios.getUsuario().getNombre()}&nbsp;&nbsp;:&nbsp;&nbsp; ${comentarios.getDescripcionComentario()}</td>
-                			</tr>    			
-                    	</c:forEach>	
-					</tbody>
-					</table>
-			
-		  </div>        
-          <div class="container" id="contenedor_form">
-		
-			<h1>Agregar Comentario</h1>
-			<form:form action="CrearComentario?idReunion=${idR}" method="POST" modelAttribute="comentario">
-				
-				<div class="form-group">
-			   		<form:textarea path="descripcionComentario" id="nombreReunion" class="input form-control"/>
-				</div>
-				
-				<div class="form-group botones">
-					<button class="btn btn-primary boton" type="submit">Crear</button>
-				</div>
-			</form:form>
- 		</div>
-                
-
-        </div>
- 
 <%@ include file="Footer.jsp" %>
