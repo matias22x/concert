@@ -1,7 +1,6 @@
 <%@ include file="Header.jsp" %>
 <body>
         <!-- cuerpo -->
-        <form:form action="reunionUsuarios?idReunion=${idR}" method="POST">
         <div class="container">
             <h2 style="text-align: center;">${datosReunion.getNombreReunion()}</h2>
             <hr>
@@ -81,7 +80,7 @@
 	</div>  
 	</br>
 	<!-- Comentarios -->
-	 <c:if test="${not empty sesionUsuario.getNombre() }">
+	 
 	                     
 		<div class="container" style="background-color: #1e162d; border-radius: 15px;">
 		  <div class="row">
@@ -110,7 +109,8 @@
 				      </div>
 				 	</c:forEach> 
 				      <!-- Hacer un comentario -->
-				      </br>			      
+				      </br>	
+				    <c:if test="${not empty sesionUsuario.getNombre() }">	      
 			        <form:form action="CrearComentario?idReunion=${idR}" method="POST" modelAttribute="comentario"> 
 			        <h1>Agregar Comentario</h1>
 			            <div class="form-group">
@@ -124,6 +124,7 @@
 			                </div>
 			            </div>            
 			        </form:form>
+			        </c:if>  
 				</div>              
 				<!-- Lista de Usuarios -->
 				<div class="col-md-4">
@@ -135,7 +136,6 @@
 			</div>
 		 </div> 
 		</div>   
- </c:if>        
-       </form:form>  
+       
        
 <%@ include file="Footer.jsp" %>
