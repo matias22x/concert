@@ -54,9 +54,9 @@
                     <h2 class="hvr-underline-from-center">${sesionUsuarioLog.getNombre()} <span>Información</span></h2>
                     <div>
                       <ul>
-                       <li><span>Apellido:</span> ${sesionUsuarioLog.getApellido()}</li>
-                        <li><span>E-mail:</span> ${sesionUsuarioLog.getEmail()}</li>
-                        <li><span>Localidad:</span> ${sesionUsuarioLog.getLocalidad()}</li>
+                       <li><span>Apellido: </span> ${sesionUsuarioLog.getApellido()}</li>
+                        <li><span>E-mail: </span> ${sesionUsuarioLog.getEmail()}</li>
+                        <li><span>Localidad: </span> ${sesionUsuarioLog.getLocalidad()}</li>
                       </ul>
                       <!--a href="ListaAmigos" class="btn btn-primary boton" role="button">Lista de Amigos</a-->
 
