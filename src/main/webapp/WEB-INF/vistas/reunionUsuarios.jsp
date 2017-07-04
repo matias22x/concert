@@ -92,10 +92,35 @@
                  Salir de la reunión
             </a>            
        
-   
-    <!--<c:forEach items="${miListaDeReunion}" var="reunion">                
-          </c:forEach>-->      
-          
+        	
+        	
+<!--         Lista de Comentarios(Si no esta logueado no uede comentar)	 -->
+		 <div class="col-md-6"> 
+                    <table class="table" style="font-size: 16px; color: white;">
+					<tbody>
+                    	<c:forEach items="${listComent}" var="comentarios">	
+                    		<tr>
+                    			<td>${comentarios.getUsuario().getNombre()}&nbsp;&nbsp;:&nbsp;&nbsp; ${comentarios.getDescripcionComentario()}</td>
+                			</tr>    			
+                    	</c:forEach>	
+					</tbody>
+					</table>
+			
+		  </div>        
+          <div class="container" id="contenedor_form">
+		
+			<h1>Agregar Comentario</h1>
+			<form:form action="CrearComentario?idReunion=${idR}" method="POST" modelAttribute="comentario">
+				
+				<div class="form-group">
+			   		<form:textarea path="descripcionComentario" id="nombreReunion" class="input form-control"/>
+				</div>
+				
+				<div class="form-group botones">
+					<button class="btn btn-primary boton" type="submit">Crear</button>
+				</div>
+			</form:form>
+ 		</div>
                 
 
         </div>

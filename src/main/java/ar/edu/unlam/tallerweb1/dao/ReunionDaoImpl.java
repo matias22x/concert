@@ -143,4 +143,14 @@ public class ReunionDaoImpl implements ReunionDao{
 	    
 	   }
 	
+//		@Transactional(readOnly = true)
+//		@Override
+//		public List<Usuario> listUsuariosPorReunionDAO(Long idReunion){
+//			Session session = sessionFactory.getCurrentSession();
+//			List<Usuario> usuariosList = session.createCriteria(Usuario.class)
+//					.createAlias("reuniones", "reuA")
+//					.add(Restrictions.eq("reuA.idReunion", idReunion))
+//					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+//			return usuariosList;
+//		}
 }

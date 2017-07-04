@@ -18,4 +18,7 @@ public interface ServicioLogin {
 	
 	//validar registro unico mail
 	 public Usuario validarMail(String email);
+	 
+	//NUEVO
+	public List<Usuario> listUsuariosPorReunionService(Long idReunion);
 }

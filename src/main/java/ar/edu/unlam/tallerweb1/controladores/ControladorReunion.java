@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import antlr.collections.List;
+import ar.edu.unlam.tallerweb1.modelo.Comentario;
 import ar.edu.unlam.tallerweb1.modelo.Evento;
 import ar.edu.unlam.tallerweb1.modelo.Reunion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioComentario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEvento;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 import ar.edu.unlam.tallerweb1.servicios.ServicioReunion;
@@ -35,6 +37,9 @@ public class ControladorReunion {
 	
 	@Inject
 	private ServicioLogin servicioLogin;
+	
+	@Inject
+	private ServicioComentario servicioComentario;
 	
 	/*paso modelo Reunion a CrearReunion ,,,,,,, aca agregar el id de evento y cargarlo a la reunion*/
 	@RequestMapping(path = "/CrearReunion")
@@ -72,11 +77,16 @@ public class ControladorReunion {
 		
 	 }
 	
+	//MODIFIQUE ESTO
 	@RequestMapping(path="/reunionUsuarios")
 	public ModelAndView reunionUsuarios(@RequestParam("idReunion") Long idReunion){ 
+	  Comentario comentario = new Comentario();	
 	  ModelMap modelo = new ModelMap();
 	  modelo.put("datosReunion", servicioReunion.reunionporidService(idReunion));
 	  modelo.put("idR", idReunion);
+	  modelo.put("listComent", servicioComentario.listaComentariosEnReunionService(idReunion));
+	  modelo.put("listaUsu",servicioLogin.listUsuariosPorReunionService(idReunion));
+	  modelo.put("comentario", comentario);
 	  return new ModelAndView("reunionUsuarios",modelo);	   
 	 }
 	
@@ -100,6 +110,8 @@ public class ControladorReunion {
 		servicioReunion.sacarUsuariodeReunionService(reu, us);
 		return new ModelAndView("redirect:/Inicio");
 	}
+	
+	
 	
 	@RequestMapping(path="/ListaReuniones")
 	public ModelAndView ListaReuniones(){ 

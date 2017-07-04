@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -76,4 +77,14 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		    .uniqueResult(); //devuelve un unico resultado
 		 }
 		
+			@Transactional(readOnly = true)
+			@Override
+			public List<Usuario> listUsuariosPorReunionDAO(Long idReunion){
+				Session session = sessionFactory.getCurrentSession();
+				List<Usuario> usuariosList = session.createCriteria(Usuario.class)
+						.createAlias("reuniones", "reuA")
+						.add(Restrictions.eq("reuA.idReunion", idReunion))
+						.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+				return usuariosList;
+			}
 }

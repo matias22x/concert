@@ -46,6 +46,12 @@ public class ServicioLoginImpl implements ServicioLogin {
 		return usuarioDao.usuarioporid(idUsuario);
 	}
 	
+	//NUEVO
+	@Override
+	public List<Usuario> listUsuariosPorReunionService(Long idReunion){
+		return usuarioDao.listUsuariosPorReunionDAO(idReunion);
+	}
+	
 	//validar registro unico mail
 	 public Usuario validarMail(String email){
 	  return usuarioDao.validarMailDao(email);
