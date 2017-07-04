@@ -18,6 +18,7 @@ import ar.edu.unlam.tallerweb1.modelo.Evento;
 import ar.edu.unlam.tallerweb1.modelo.Reunion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
+
 @Service("reunionDao")
 public class ReunionDaoImpl implements ReunionDao{
 	
@@ -143,14 +144,14 @@ public class ReunionDaoImpl implements ReunionDao{
 	    
 	   }
 	
-//		@Transactional(readOnly = true)
-//		@Override
-//		public List<Usuario> listUsuariosPorReunionDAO(Long idReunion){
-//			Session session = sessionFactory.getCurrentSession();
-//			List<Usuario> usuariosList = session.createCriteria(Usuario.class)
-//					.createAlias("reuniones", "reuA")
-//					.add(Restrictions.eq("reuA.idReunion", idReunion))
-//					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-//			return usuariosList;
-//		}
+		@Transactional(readOnly = true)
+		@Override
+		public List<Usuario> listUsuariosPorReunionDAO(Long idReunion){
+			Session session = sessionFactory.getCurrentSession();
+			List<Usuario> usuariosList = session.createCriteria(Usuario.class)
+					.createAlias("reuniones", "reuA")
+					.add(Restrictions.eq("reuA.idReunion", idReunion))
+					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+			return usuariosList;
+		}
 }
