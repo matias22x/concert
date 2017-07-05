@@ -2,7 +2,6 @@ package ar.edu.unlam.tallerweb1.dao;
 
 import java.util.List;
 
-import ar.edu.unlam.tallerweb1.modelo.Evento;
 import ar.edu.unlam.tallerweb1.modelo.Reunion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
@@ -24,5 +23,5 @@ public interface ReunionDao {
 	public void unirUsuarioAReunionDAO(Reunion reu,Usuario usu);
 	/*Muestro reuniones en PerfilUsuario Email*/
 	 public List<Reunion> listaDeReunionesEnPerfilDaoEmail(String email);
-	
+	 void sacarUsuarioDeReunion(Usuario usuario, Reunion reunion);
 }

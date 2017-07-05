@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.unlam.tallerweb1.modelo.Evento;
 import ar.edu.unlam.tallerweb1.modelo.Reunion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
@@ -153,5 +152,13 @@ public class ReunionDaoImpl implements ReunionDao{
 					.add(Restrictions.eq("reuA.idReunion", idReunion))
 					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 			return usuariosList;
+		}
+		
+
+		@Override
+	    @Transactional
+		public void sacarUsuarioDeReunion(Usuario usuario, Reunion reunion) {
+		    reunion.getUsuarios().remove(usuario);
+		    actualizarReunionDao(reunion);
 		}
 }
