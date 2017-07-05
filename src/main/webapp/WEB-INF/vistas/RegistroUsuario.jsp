@@ -29,9 +29,9 @@
 			</div>
 
 			<div class="form-group">
-    			<label for="localidad">Imagen: </label>
-    			<form:input type="text" path="imagen" class="input form-control"/>
-   			</div>
+       			<label for="localidad">Imagen: </label>
+       			<form:input type="text" path="imagen" class="input form-control"/>
+      		</div>
 
 			<div class="form-group">
 				<label for="contraseña">Password: </label>
