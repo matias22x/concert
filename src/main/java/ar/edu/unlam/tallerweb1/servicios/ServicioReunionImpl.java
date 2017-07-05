@@ -107,7 +107,9 @@ public class ServicioReunionImpl implements ServicioReunion {
 	  return reunionDao.usuariosUnidosAReunionDao(idReunion, id);
 	 }
 	 
-	 public void sacarUsuariodeReunionService(Usuario us, Reunion reu){
-		 reunionDao.sacarUsuarioDeReunion(us, reu);
+	 @Override
+	 public void sacarUsuariodeReunionService(Usuario us,Reunion reu){
+
+	  reunionDao.salirDeReunionDao(reu,us);
 	 }
 }

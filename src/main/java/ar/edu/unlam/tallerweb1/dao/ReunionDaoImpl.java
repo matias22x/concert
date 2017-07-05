@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.modelo.Reunion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.dao.UsuarioDao;
 
 
 @Service("reunionDao")
@@ -23,6 +24,10 @@ public class ReunionDaoImpl implements ReunionDao{
 	
 	@Inject
 	private SessionFactory sessionFactory; 
+	
+	
+	@Inject
+	public UsuarioDao usuarioDao;
 	
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
 	@Override
@@ -168,11 +173,13 @@ public class ReunionDaoImpl implements ReunionDao{
 			return usuariosList;
 		}
 
-		@Override
-	    @Transactional
-		public void sacarUsuarioDeReunion(Usuario us, Reunion reu) {
-			Session session = sessionFactory.getCurrentSession();
-		    reu.getUsuarios().remove(us);
-		    actualizarReunionDao(reu);
-		}
+		@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
+		 @Override
+		 public void salirDeReunionDao(Reunion reunion, Usuario usuario){
+		  Session session = sessionFactory.getCurrentSession();
+		  Reunion re = reunionporid(reunion.getidReunion());
+		  Usuario usua = usuarioDao.usuarioporid(usuario.getId()); 
+		  re.getUsuarios().remove(usua);
+		  session.update(re);
+		 }
 }
