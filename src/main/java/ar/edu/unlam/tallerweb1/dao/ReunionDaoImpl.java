@@ -155,6 +155,19 @@ public class ReunionDaoImpl implements ReunionDao{
 		}
 		
 
+		@Transactional(readOnly = true)
+		@Override
+		public List<Reunion> usuariosUnidosAReunionDao(Long idReunion, Long id){
+			Session session = sessionFactory.getCurrentSession();
+			List<Reunion> usuariosList = session.createCriteria(Reunion.class)
+					.createAlias("reuniones", "reuA")
+					.createAlias("usuarios", "usuario")
+					.add(Restrictions.eq("reuA.idReunion", idReunion))
+					.add(Restrictions.eq("usuario.idUsuario", id))
+					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+			return usuariosList;
+		}
+
 		@Override
 	    @Transactional
 		public void sacarUsuarioDeReunion(Usuario usuario, Reunion reunion) {

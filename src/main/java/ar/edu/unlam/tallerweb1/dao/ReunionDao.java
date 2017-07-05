@@ -23,5 +23,6 @@ public interface ReunionDao {
 	public void unirUsuarioAReunionDAO(Reunion reu,Usuario usu);
 	/*Muestro reuniones en PerfilUsuario Email*/
 	 public List<Reunion> listaDeReunionesEnPerfilDaoEmail(String email);
+	 public List<Reunion> usuariosUnidosAReunionDao(Long idReunion, Long id);
 	 void sacarUsuarioDeReunion(Usuario usuario, Reunion reunion);
 }

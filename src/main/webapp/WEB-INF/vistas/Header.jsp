@@ -20,49 +20,47 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div><!-- header -->
-		<div class="text-left col-md-6">
-			<a href="Inicio"><img src="images/logo.png" id="logo"></a>
-		</div>
-		<div class="clearfix"></div>
-		<div>
-			<nav class="navbar navbar-inverse">
-			  <div class="container-fluid">
-				  	<div class="col-md-6">
-						<div class="navbar-header">
-						  <a class="navbar-brand" href="Inicio">Inicio</a>
-						</div>
-						<ul class="nav navbar-nav">
-						  <li><a href="Destacados">Destacados</a></li>
-						  <li><a href="Proximos">Próximos</a></li>
-						  <li>
-						  <form method="POST" action="busqueda" >
-						  	<input name="data" type="text" class="input form-control"/>
-						  	<input type="submit" value="Buscar" class="btn btn-primary boton">
-						  </form>
-						  </li>
-						</ul>
-					</div>
-					<div class="col-md-6">
-						<ul class="nav navbar-nav pull-right">
-						<c:if test="${not empty sesionUsuario.getNombre() && sesionUsuario.getNombre() != 'admin'}">
-						  <li><a href="PerfilUsuario?email=${sesionUsuario.getEmail()}">${sesionUsuario.getNombre()}</a></li>
-						  <li><a href="cerrarSesion">Cerrar Sesión</a></li>
-				        </c:if>							
-						<c:if test="${sesionUsuario.getNombre() == 'admin'}">
-							<li><a href="CrearEvento">Crear Eventos</a></li>
-							<li><a href="IndexAdmin">Ver Eventos</a></li>
-                            <li><a href="ListaReuniones">Ver Reuniones</a></li>
-                            <li><a href="ListaUsuarios">Ver Usuarios</a></li>
-						  	<li><a href="cerrarSesion">Cerrar Sesión</a></li>							
-						</c:if>				        
-						<c:if test="${empty sesionUsuario.getNombre()}">
-						  <li><a href="RegistroUsuario">Registro</a></li>
-						  <li><a href="IniciarSesion">Iniciar Sesión</a></li>
-						</c:if>
-						</ul>
-					</div>			
-			  </div>		  
-			</nav>
-		</div>
-	</div><!-- header -->
+ <div><!-- header -->
+  <div class="text-left col-md-6">
+   <a href="Inicio"><img src="images/logo.png" id="logo"></a>
+  </div>
+  <div class="clearfix"></div>
+  <div>
+   <nav class="navbar navbar-inverse">
+     <div class="container-fluid">
+       <div class="col-md-6">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="Inicio">Inicio</a>
+      </div>
+      <form method="POST" action="busqueda">
+           <ul class="nav navbar-nav">
+             <li><a href="Destacados">Destacados</a></li>
+             <li><a href="Proximos">Próximos</a></li>
+             <li> <input name="data" type="text" id="buscador" class="input form-control"/></li>
+             <li> <input type="submit" value="Buscar" id="botonB" class="btn"></li>
+           </ul>
+           </form>
+     </div>
+     <div class="col-md-6">
+      <ul class="nav navbar-nav pull-right">
+      <c:if test="${not empty sesionUsuario.getNombre() && sesionUsuario.getNombre() != 'admin'}">
+        <li><a href="PerfilUsuario?email=${sesionUsuario.getEmail()}">${sesionUsuario.getNombre()}</a></li>
+        <li><a href="cerrarSesion">Cerrar Sesión</a></li>
+            </c:if>       
+      <c:if test="${sesionUsuario.getNombre() == 'admin'}">
+       <li><a href="CrearEvento">Crear Eventos</a></li>
+       <li><a href="IndexAdmin">Eventos</a></li>
+                            <li><a href="ListaReuniones">Reuniones</a></li>
+                            <li><a href="ListaUsuarios">Usuarios</a></li>
+         <li><a href="cerrarSesion">Cerrar Sesión</a></li>       
+      </c:if>            
+      <c:if test="${empty sesionUsuario.getNombre()}">
+        <li><a href="RegistroUsuario">Registro</a></li>
+        <li><a href="IniciarSesion">Iniciar Sesión</a></li>
+      </c:if>
+      </ul>
+     </div>   
+     </div>    
+   </nav>
+  </div>
+ </div><!-- header -->

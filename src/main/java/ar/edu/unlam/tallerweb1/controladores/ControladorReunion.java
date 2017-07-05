@@ -79,9 +79,20 @@ public class ControladorReunion {
 	
 	//MODIFIQUE ESTO
 	@RequestMapping(path="/reunionUsuarios")
-	public ModelAndView reunionUsuarios(@RequestParam("idReunion") Long idReunion){ 
-	  Comentario comentario = new Comentario();	
+	public ModelAndView reunionUsuarios(@RequestParam("idReunion") Long idReunion, @ModelAttribute("sesionUsuario") Usuario us){
+	  
 	  ModelMap modelo = new ModelMap();
+	  Reunion reunion = servicioReunion.reunionporidService(idReunion);
+	  if(reunion.getUsuarios().contains(us.getId()) == true){
+		  String noUnido;
+		  noUnido = "1";
+		  modelo.put("noUnido", noUnido);
+	  }else{
+		  String unido;
+		  unido = "1";
+		  modelo.put("unido", unido);
+	  }
+	  Comentario comentario = new Comentario();	
 	  modelo.put("datosReunion", servicioReunion.reunionporidService(idReunion));
 	  modelo.put("idR", idReunion);
 	  modelo.put("listComent", servicioComentario.listaComentariosEnReunionService(idReunion));

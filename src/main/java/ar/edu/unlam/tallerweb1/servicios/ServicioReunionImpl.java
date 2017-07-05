@@ -102,5 +102,8 @@ public class ServicioReunionImpl implements ServicioReunion {
 	  return reunionDao.listaDeReunionesEnPerfilDaoEmail(email);
 	 }
 
-
+	 @Override
+	 public List<Reunion> usuariosUnidosAReunion(Long idReunion,Long id){
+	  return reunionDao.usuariosUnidosAReunionDao(idReunion, id);
+	 }
 }
