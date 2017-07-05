@@ -48,28 +48,16 @@
                             <tr>
                             	<td>
 	                            	<c:if test="${not empty sesionUsuario.getNombre() }">
-	                            		<a href="unirUsuarioAReunion?idReunion=${idR}">
+	                            		<c:if test="${not empty noUnido}">
+	                            			<a href="unirUsuarioAReunion?idReunion=${idR}">
 							                 Unirse a Reunión
-							            </a>
-							            <a href="salirUsuarioDeReunion?idReunion=${idR}">
+							            	</a>
+							            </c:if>
+							            <c:if test="${not empty unido}">
+							            	 <a href="salirUsuarioDeReunion?idReunion=${idR}">
 							                 Salir de la reunión
-							            </a>  
-		                            	<!--button class="btn" type="submit">
-		                            	<span class="glyphicon glyphicon-thumbs-up"></span>
-							                 Unirse a Reunión
-							            </button-->
-							        </c:if>
-							        <c:if test="${!not empty sesionUsuario.getNombre() }">
-<%-- 							        	<c:if test="${not empty noUnido}"> --%>
-	                            		<a href="UnionIncorrecta">
-							                 Unirse a Reunión
-							            </a>
-<%-- 							            </c:if> --%>
-<%-- 							            <c:if test="${not empty unido}"> --%>
-							            <a href="salirUsuarioDeReunion?idReunion=${idR}">
-							                 Salir de la reunión
-							            </a>
-<%-- 							            </c:if>   --%>
+							           		 </a>
+							            </c:if>  
 							        </c:if>
 					            </td>
 					            

@@ -1,3 +1,8 @@
+html{
+    position: relative; 
+    min-height: 100%;
+}
+
 #header {
 	background: #2A2A30;
 }
@@ -301,6 +306,9 @@ p{
     background: #2A2A30;
     padding: 25px;
     margin-top: 25px;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: -20px;
 }
 
 .menup{
@@ -329,6 +337,10 @@ a{
 	text-transform: uppercase;
 	font-weight: bold;
 	color: #46D4FB;
+}
+
+.espacio{
+    height: 150px;
 }
 
 /**/
@@ -403,3 +415,42 @@ div.img-responsive {
     font-weight: 400;
 }
 
+/* ADMIN */
+		
+.btn{
+	background-color: #940BCA;
+    border-radius: 0px;
+    margin-top: 15px;
+    margin-left: 5px;
+    
+    /*color del texto que va dentro del boton*/
+    color: #d3ceff;
+    text-shadow: 1px 1px 1px #060606;
+    font-weight: bold;
+}
+
+.btn: hover{
+    background-color: white;
+    border-color: #710C98;
+}
+
+.table-success > tbody > tr.success > td {
+     background-color:#543872 !important;
+     border-radius: 0px;
+    border: 1.5px solid white;
+    color: white;
+}
+
+
+/*Buscador Header*/
+input[id=buscador] {
+    width: 100%;
+    font-size: 14px;
+    position: relative;
+    top: 8px;
+}
+
+input[id=botonB] {
+    position: relative;
+    bottom: 7px;
+}
