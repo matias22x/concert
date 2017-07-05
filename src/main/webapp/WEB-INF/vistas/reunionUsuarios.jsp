@@ -60,12 +60,16 @@
 							            </button-->
 							        </c:if>
 							        <c:if test="${!not empty sesionUsuario.getNombre() }">
+<%-- 							        	<c:if test="${not empty noUnido}"> --%>
 	                            		<a href="UnionIncorrecta">
 							                 Unirse a Reunión
 							            </a>
+<%-- 							            </c:if> --%>
+<%-- 							            <c:if test="${not empty unido}"> --%>
 							            <a href="salirUsuarioDeReunion?idReunion=${idR}">
 							                 Salir de la reunión
-							            </a>  
+							            </a>
+<%-- 							            </c:if>   --%>
 							        </c:if>
 					            </td>
 					            
