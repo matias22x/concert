@@ -170,8 +170,9 @@ public class ReunionDaoImpl implements ReunionDao{
 
 		@Override
 	    @Transactional
-		public void sacarUsuarioDeReunion(Usuario usuario, Reunion reunion) {
-		    reunion.getUsuarios().remove(usuario);
-		    actualizarReunionDao(reunion);
+		public void sacarUsuarioDeReunion(Usuario us, Reunion reu) {
+			Session session = sessionFactory.getCurrentSession();
+		    reu.getUsuarios().remove(us);
+		    actualizarReunionDao(reu);
 		}
 }

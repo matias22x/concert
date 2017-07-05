@@ -29,4 +29,5 @@ public interface ServicioReunion {
 	/*Muestro Lista Reuniones en PerfilUsuario desde Email*/
 	 public List<Reunion> listaDeReunionesEnPerfilServiceEmail(String Email);
 	 public List<Reunion> usuariosUnidosAReunion(Long idReunion,Long id);
+	 public void sacarUsuariodeReunionService(Usuario us, Reunion reu);
 }

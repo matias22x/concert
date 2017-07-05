@@ -83,15 +83,13 @@ public class ControladorReunion {
 	  
 	  ModelMap modelo = new ModelMap();
 	  Reunion reunion = servicioReunion.reunionporidService(idReunion);
-	  if(reunion.getUsuarios().contains(us.getId()) == true){
-		  String noUnido;
-		  noUnido = "1";
-		  modelo.put("noUnido", noUnido);
+	  String estado;
+	  if(reunion.getUsuarios().equals(us) == true){
+		  estado = "unido";
 	  }else{
-		  String unido;
-		  unido = "1";
-		  modelo.put("unido", unido);
+		  estado = "no unido";
 	  }
+	  modelo.put("estado", estado);
 	  Comentario comentario = new Comentario();	
 	  modelo.put("datosReunion", servicioReunion.reunionporidService(idReunion));
 	  modelo.put("idR", idReunion);
@@ -112,15 +110,15 @@ public class ControladorReunion {
 	}
 	/* -------  */
 	
-//SE VA
-//	@RequestMapping(path="/salirUsuarioDeReunion")
-//	public ModelAndView salirUsuarioDeReunion(@RequestParam("idReunion") Long idReunion,@ModelAttribute("sesionUsuario") Usuario us){
-//		
-//		Reunion reu = servicioReunion.reunionporidService(idReunion);
-//		
-//		servicioReunion.sacarUsuariodeReunionService(reu, us);
-//		return new ModelAndView("redirect:/Inicio");
-//	}
+
+	@RequestMapping(path="/salirUsuarioDeReunion")
+	public ModelAndView salirUsuarioDeReunion(@RequestParam("idReunion") Long idReunion,@ModelAttribute("sesionUsuario") Usuario us){
+		
+		Reunion reu = servicioReunion.reunionporidService(idReunion);
+		
+		servicioReunion.sacarUsuariodeReunionService(us, reu);
+		return new ModelAndView("redirect:/Inicio");
+	}
 	
 	
 	
