@@ -54,7 +54,7 @@ public class TestControladorLoginMocks {
 //  
   
   
-  when(servicioLoginMock.traerUsuarioPorEmail("brbrbr@live.com.ar")).thenReturn(usuarioMock);
+  when(daoMock.traerUsuarioPorEmail("brbrbr@live.com.ar")).thenReturn(usuarioMock);
   //ejecuto
   ModelAndView mav = controladorUsuarioMock.verificarLogin(usuarioMock.getEmail(), usuarioMock.getPassword());
   //compruebo que me lleva a la vista correcta

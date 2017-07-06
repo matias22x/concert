@@ -1,8 +1,7 @@
- <%@ include file="Header.jsp" %>
+<%@ include file="Header.jsp" %>
 <body>
         <!-- cuerpo -->
      <div class="container">
-        <!-- c:forEach items="${listaEventos}" var="evento" -->
             <h2 style="text-align: center;">${eventoElegido.getidEvento()} - ${eventoElegido.getNombreEvento()}</h2>
             <hr>
             <div class="col-md-12">
@@ -49,25 +48,11 @@
                         </tbody>
                     </table>
                 </div>
-            <!-- /c:forEach -->>    
          </div>
-        
             <div class="form-group botones" style="text-align: center;">
-                <!-- a href="PerfilUsuario?email=${sesionUsuario.getEmail()}" class="btn btn-primary" role="button">
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                    Unirse   
-                </a -->
-                <!--button class="btn btn-primary boton" type="submit">
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                    Voy a ir
-                </button-->
-                <a href="detalleReunion?idEvento=${eventoElegido.getidEvento()}" class="btn btn-primary boton btn-lg" role="button">
-                 Reunión
+                <a href="detalleReunion?idEvento=${eventoElegido.getidEvento()}" class="btn" role="button">
+                	Reunión
                 </a>
-                <!--  button class="btn btn-primary boton" type="submit">
-                    Quiero ir
-                    <span class="glyphicon glyphicon-heart-empty"></span>
-                </button-->
             </div>
         </div>
 
