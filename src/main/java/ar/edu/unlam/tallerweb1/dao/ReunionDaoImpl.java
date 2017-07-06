@@ -135,18 +135,18 @@ public class ReunionDaoImpl implements ReunionDao{
 		return reunionList;
 	}
 	
-	/* Mostrar Lista de Reuniones en PerfilUsuario Email*/
-	   
-	   @Transactional(readOnly = true)
-	   @Override
-	   public List<Reunion> listaDeReunionesEnPerfilDaoEmail(String email) {
-	    Session session = sessionFactory.getCurrentSession();
-	    List<Reunion> listaReunionesEnPerfilEmail = session.createCriteria(Reunion.class)
-	      .createAlias("usuario", "usuA")
-	      .add(Restrictions.eq("usuA.email", email)).list();
-	    return listaReunionesEnPerfilEmail;
-	    
-	   }
+/* Mostrar Lista de Reuniones en PerfilUsuario Email*/
+    
+    @Transactional(readOnly = true)
+    @Override
+    public List<Reunion> listaDeReunionesEnPerfilDaoEmail(String email) {
+     Session session = sessionFactory.getCurrentSession();
+     List<Reunion> listaReunionesEnPerfilEmail = session.createCriteria(Reunion.class)
+       .createAlias("usuarios", "usuA")
+       .add(Restrictions.eq("usuA.email", email)).list();
+     return listaReunionesEnPerfilEmail;
+     
+    }
 	
 		@Transactional(readOnly = true)
 		@Override

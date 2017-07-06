@@ -59,7 +59,7 @@ public class ReunionDaoImplTest {
         assertThat(reunionConUsuario.get(1).getUsuarios()).hasSize(1);
 
         /* Operación */
-        reunionDao.sacarUsuarioDeReunion(usuario, reunion);
+        reunionDao.salirDeReunionDao(reunion, usuario);
 
         /* Verificación */
         Usuario usuarioSinReunion = usuarioDao.consultarUsuario(usuario);

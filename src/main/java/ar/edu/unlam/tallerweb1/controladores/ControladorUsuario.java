@@ -30,6 +30,14 @@ public class ControladorUsuario {
 	@Inject
 	private ServicioLogin servicioLogin;
 	
+	public ServicioLogin getServicioLogin() {
+		return servicioLogin;
+	}
+
+	public void setServicioLogin(ServicioLogin servicioLogin) {
+		this.servicioLogin = servicioLogin;
+	}
+
 	@Inject
 	private ServicioReunion servicioreunion;
 	

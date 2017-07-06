@@ -83,8 +83,9 @@ public class ControladorReunion {
 	  
 	  ModelMap modelo = new ModelMap();
 	  Reunion reunion = servicioReunion.reunionporidService(idReunion);
+	  
 	  String estado;
-	  if(reunion.getUsuarios().equals(us) == true){
+	  if(reunion.getUsuarios().contains(servicioLogin.usuarioporidService(us.getId())) == true){
 		  estado = "unido";
 	  }else{
 		  estado = "no unido";

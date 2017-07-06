@@ -1,7 +1,7 @@
 <%@ include file="Header.jsp" %>
 
         <!-- cuerpo -->
-        
+<c:if test="${sesionUsuario.getNombre() == 'admin'}">            
         <table class="table table-success">
 			<thead>
 				<tr class="active">
@@ -42,3 +42,12 @@
 				</c:forEach>
 		 </tbody>
 	</table>
+</c:if>
+<c:if test="${sesionUsuario.getNombre() != 'admin'}">
+	<div>
+		<p>Error 404 </p><br>
+		<p>Puede volver al inicio desde <a href="Inicio">Aquí</a></p>
+	</div>
+</c:if>
+
+     <%@ include file="Footer.jsp" %>

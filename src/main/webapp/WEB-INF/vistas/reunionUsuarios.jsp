@@ -49,16 +49,16 @@
                             	<td>
                             	<p>${estado}</p>
 	                            	<c:if test="${not empty sesionUsuario.getNombre() }">
-<%-- 	                            		<c:if test="${estado == 'no unido'}"> --%>
+	                            		<c:if test="${estado == 'no unido'}">
 	                            			<a href="unirUsuarioAReunion?idReunion=${idR}">
 							                 Unirse a Reunión
 							            	</a>
-<%-- 							            </c:if> --%>
-<%-- 							            <c:if test="${estado == 'unido'}"> --%>
+							            </c:if>
+							            <c:if test="${estado == 'unido'}">
 							            	 <a href="salirUsuarioDeReunion?idReunion=${idR}">
 							                 Salir de la reunión
 							           		 </a>
-<%-- 							            </c:if>   --%>
+							            </c:if>  
 							        </c:if>
 					            </td>
 					            

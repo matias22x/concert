@@ -1,6 +1,6 @@
 <%@ include file="Header.jsp" %>
         <!-- cuerpo -->
-        
+<c:if test="${sesionUsuario.getNombre() == 'admin'}">           
         <table class="table table-success">
    <thead>
     <tr class="active">
@@ -32,12 +32,16 @@
       </td>
       <td>
        <a href="MostrarPerfilUsuario?email=${usuario.getEmail()}" class="btn" />Mostrar Perfil</a>
-       <!--  input type="button" class="btn btn-warning" value="Modificar" />
-       <input type="button" class="btn btn-danger" value="Eliminar" /-->
       </td>
      </tr> 
     </c:forEach>
    </tbody>
  </table>
-        
+</c:if>
+<c:if test="${sesionUsuario.getNombre() != 'admin'}">
+	<div>
+		<p>Error 404 </p><br>
+		<p>Puede volver al inicio desde <a href="Inicio">Aquí</a></p>
+	</div>
+</c:if>        
      <%@ include file="Footer.jsp" %>

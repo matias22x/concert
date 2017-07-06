@@ -33,7 +33,7 @@ public class UsuarioDaoImplTest {
         /* Inicialización */
         usuario = new Usuario();
         usuario.setId(1L);
-        usuario.setEmail("email1");
+        usuario.setEmail("cambiarmail");
         usuario.setPassword("pass1");
         usuario.setApellido("apellido1");
         usuario.setNombre("nombre1");
